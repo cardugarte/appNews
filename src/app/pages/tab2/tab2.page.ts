@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { categories } from 'src/app/interfaces/index.interface';
+import { NewsService } from 'src/app/services/news.service';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit {
 
   categories: categories[] = [
     {
@@ -53,10 +54,20 @@ export class Tab2Page {
 
   categorySelected: string = this.categories[0].key;
 
-  constructor() {}
+  constructor(
+    private newsService: NewsService
+  ) {}
 
-  segmentChanged(event) {
-    console.log(event)
+  ngOnInit(): void {
+      this.newsService.getTopHeadlineByCategory(this.categorySelected)
+        .subscribe(articule => {
+          console.log(articule);
+        })
+  }
+
+  segmentChanged(event: any) {
+    this.categorySelected = event.detail.value;
+    console.log(event.detail.value)
   }
 
 }

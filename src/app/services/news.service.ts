@@ -33,5 +33,17 @@ export class NewsService {
       );
     }
 
+    getTopHeadlineByCategory(category: string): Observable<Articule[]> {
+      return this.http.get<News>(`https://api.thenewsapi.com/v1/news/top`, {
+        params: {
+          api_token: apiKey,
+          locale: 'ar',
+          categories: category
+        }
+      }).pipe(
+        map(news => news.data)
+      )
+    }
+
 
 }
