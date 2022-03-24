@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { categories } from 'src/app/interfaces/index.interface';
+import { Articule, categories } from 'src/app/interfaces/index.interface';
 import { NewsService } from 'src/app/services/news.service';
 
 @Component({
@@ -53,21 +53,28 @@ export class Tab2Page implements OnInit {
   ]
 
   categorySelected: string = this.categories[0].key;
+  articules: Articule[] = [];
 
   constructor(
     private newsService: NewsService
   ) {}
 
   ngOnInit(): void {
-      this.newsService.getTopHeadlineByCategory(this.categorySelected)
-        .subscribe(articule => {
-          console.log(articule);
-        })
+    this.newsService.getTopHeadlineByCategory(this.categorySelected)
+      .subscribe(articule => {
+        console.log(articule);
+        this.articules = [...this.articules, ...articule];
+      });
   }
 
   segmentChanged(event: any) {
     this.categorySelected = event.detail.value;
-    console.log(event.detail.value)
+    console.log(event.detail.value);
+    this.newsService.getTopHeadlineByCategory(this.categorySelected)
+      .subscribe(articule => {
+        console.log(articule);
+        this.articules = articule;
+      });
   }
 
 }

@@ -34,11 +34,11 @@ export class NewsService {
     }
 
     getTopHeadlineByCategory(category: string): Observable<Articule[]> {
-      return this.http.get<News>(`https://api.thenewsapi.com/v1/news/top`, {
+      return this.http.get<News>(`https://api.thenewsapi.com/v1/news/all`, {
         params: {
           api_token: apiKey,
-          locale: 'ar',
-          categories: category
+          categories: category,
+          language: 'es'
         }
       }).pipe(
         map(news => news.data)
