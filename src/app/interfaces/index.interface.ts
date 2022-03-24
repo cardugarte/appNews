@@ -25,3 +25,8 @@ export interface Meta {
   limit:    number;
   page:     number;
 }
+
+export interface categories {
+  name: string;
+  key: string;
+}
