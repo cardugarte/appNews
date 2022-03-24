@@ -1,0 +1,19 @@
+<ion-card>
+  <ion-card-title
+    class="ion-margin"
+    color="primary"
+  >
+    {{articule.title}}
+  </ion-card-title>
+  <ion-card-subtitle class="ion-margin">
+    {{articule.source}}
+  </ion-card-subtitle>
+  <ion-img
+    *ngIf="articule.image_url"
+    [src]="articule.image_url"
+  >
+  </ion-img>
+  <ion-card-content>
+    <p>{{articule.description}}</p>
+  </ion-card-content>
+</ion-card>
