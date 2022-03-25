@@ -63,7 +63,7 @@ export class Tab2Page implements OnInit {
     this.newsService.getTopHeadlineByCategory(this.categorySelected)
       .subscribe(articule => {
         console.log(articule);
-        this.articules = [...this.articules, ...articule];
+        this.articules = [...articule ];
       });
   }
 

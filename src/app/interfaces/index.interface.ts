@@ -30,3 +30,11 @@ export interface categories {
   name: string;
   key: string;
 }
+
+
+export interface ArticulesByCategoryAndPage {
+  [key: string] : {
+    page: number,
+    articule: Articule[]
+  }
+}
