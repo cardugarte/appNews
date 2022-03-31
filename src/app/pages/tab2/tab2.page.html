@@ -32,4 +32,16 @@
   >
   </app-articules>
 
+  <ion-infinite-scroll
+    threshold="25%"
+    position="bottom"
+    (ionInfinite)="loadData()"
+  >
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="cargando..."
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
 </ion-content>
