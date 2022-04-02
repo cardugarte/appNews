@@ -1,6 +1,8 @@
 import { Articule } from './../../interfaces/index.interface';
 import { Component, Input } from '@angular/core';
 
+import { Browser } from '@capacitor/browser';
+
 @Component({
   selector: 'app-articule',
   templateUrl: './articule.component.html',
@@ -11,6 +13,15 @@ export class ArticuleComponent {
   @Input() articule: Articule;
 
 
-  constructor() {}
+  constructor(
+  ) {}
+
+  onClick() {
+    //
+  }
+
+  async openArticle() {
+    await Browser.open({ url: this.articule.url });
+}
 
 }
