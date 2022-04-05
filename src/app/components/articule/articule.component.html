@@ -1,4 +1,4 @@
-<ion-card>
+<ion-card class="article__size">
   <ion-card-subtitle class="ion-margin">
     <ion-row class="ion-align-items-center">
       <ion-col class="ion-margin">
@@ -17,8 +17,8 @@
         </ion-button>
       </ion-col>
     </ion-row>
+    <hr color="#121212">
   </ion-card-subtitle>
-
   <ion-card-title
     class="ion-margin"
     color="primary"
@@ -34,6 +34,7 @@
     *ngIf="articule.image_url"
     [src]="articule.image_url"
     (click)="openArticle()"
+    class="img__size"
   >
   </ion-img>
   <ion-card-content>
