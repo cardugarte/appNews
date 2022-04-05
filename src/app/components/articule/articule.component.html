@@ -6,7 +6,7 @@
       </ion-col>
       <ion-col align="right">
         <ion-button
-          (click)="onClick()"
+          (click)="onOpenMenu()"
           fill="clear"
         >
           <ion-icon
@@ -26,9 +26,6 @@
   >
     {{articule.title}}
   </ion-card-title>
-
-
-
 
   <ion-img
     *ngIf="articule.image_url"
