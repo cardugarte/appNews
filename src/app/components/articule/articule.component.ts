@@ -1,9 +1,12 @@
-import { Articule } from './../../interfaces/index.interface';
 import { Component, Input } from '@angular/core';
-
-import { Browser } from '@capacitor/browser';
 import { ActionSheetButton, ActionSheetController, Platform } from '@ionic/angular';
+
+//plugins:
+import { Browser } from '@capacitor/browser';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
+
+import { Articule } from './../../interfaces/index.interface';
+import { StorageService } from 'src/app/services/storage.service';
 
 
 @Component({
@@ -20,6 +23,7 @@ export class ArticuleComponent {
     private actionSheetCtrl: ActionSheetController,
     private socialSharing: SocialSharing,
     private platform: Platform,
+    private storageService: StorageService,
   ) {}
 
   onClick() {
@@ -81,7 +85,7 @@ export class ArticuleComponent {
   }
 
   onToggleFavorite() {
-    console.log('favorite clicked');
+    this.storageService.saveAndRemoveArticule(this.articule);
   }
 
   cancelShareSheet() {
