@@ -17,9 +17,14 @@ export class StorageService {
     this.init();
    }
 
+   get getLocalArticules() {
+     return [...this._localArticules];
+   }
+
    async init() {
     const storage = await this.storage.create();
     this._storage = storage;
+    this.loadFavorites();
   }
 
   async saveAndRemoveArticule(articule: Articule) {
@@ -32,6 +37,15 @@ export class StorageService {
     }
 
     this._storage.set('articules', this._localArticules);
+  }
+
+  async loadFavorites() {
+    try {
+      const articules = await this._storage.get('articules');
+      this._localArticules = articules || [];
+    } catch (error) {
+      console.log('Error');
+    }
   }
 
 
