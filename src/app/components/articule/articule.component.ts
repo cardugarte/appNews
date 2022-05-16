@@ -55,7 +55,6 @@ export class ArticuleComponent {
       handler: () => {
         this.onSharedClick();
       },
-
     }
 
     if(this.platform.is('capacitor')) {
@@ -66,9 +65,6 @@ export class ArticuleComponent {
       header: 'Opciones',
       buttons: normalBtn,
     });
-
-
-
 
     await actionSheet.present();
   }
